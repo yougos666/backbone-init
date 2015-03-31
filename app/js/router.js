@@ -1,6 +1,6 @@
 define(
-["backbone"], 
-function(Backbone) {
+["backbone", "views/index"], 
+function(Backbone, IndexView) {
 	
 	var AppRouter = Backbone.Router.extend({
 		routes : {
@@ -12,7 +12,9 @@ function(Backbone) {
 		var router = new AppRouter();
 		
 		router.on('route:defaultAction', function() {
-			$(".text-center").append("<p>Index route has been called</p>");
+			var indexView = new IndexView;
+			indexView.render();
+			
 		});
 		
 		Backbone.history.start();
